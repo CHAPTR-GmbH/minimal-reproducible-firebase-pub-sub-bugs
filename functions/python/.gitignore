@@ -1,0 +1,6 @@
+/pytest-coverage.txt
+/pytest.xml
+/.coverage
+.secret.local
+.direnv
+.env

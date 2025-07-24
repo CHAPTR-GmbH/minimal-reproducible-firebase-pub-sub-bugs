@@ -1,0 +1,46 @@
+services:
+  firebase:
+    build:
+      context: ./firebase
+      dockerfile: ./Dockerfile${PLATFORM}
+    user: root
+    volumes:
+      # firebase
+      - ./firebase/:/home/node
+      - ./firebase/.cache:/home/node/.cache
+      - ./firebase.json:/home/node/firebase.json 
+     
+      # rules
+      - ./firestore.rules:/home/node/firestore.rules
+
+      # python functions
+      - ./functions/python/pytest.ini:/home/node/functions/python/pytest.ini
+      - ./functions/python/__init__.py:/home/node/functions/python/__init__.py # Python function main init
+      - ./functions/python/main.py:/home/node/functions/python/main.py # Python function main entrypoint
+      - ./functions/python/pyproject.toml:/home/node/functions/python/pyproject.toml # Fn requirements
+      - ./functions/python/poetry.lock:/home/node/functions/python/poetry.lock # Fn requirements
+      - ./functions/python/requirements.txt:/home/node/functions/python/requirements.txt # Fn requirements
+      - ./functions/python/app:/home/node/functions/python/app # Python function code base
+      - ./functions/python/.env.demo-local-development:/home/node/functions/python/.env.demo-local-development # Python functions params
+
+    ports:
+      - 3001:3001 #Hosting emulator
+      - 4000:4000 #Emulator Suite UI
+      - 4400:4400 #Emulator Suite UI
+      - 4500:4500 #Emulator Suite UI
+      - 9150:9150 #Emulator Suite UI
+      - 5050:5000 #Firebase Hosting
+      - 5001:5001 #Cloud Functions
+      - 8828:8828 #Cloud Functions
+      - 8080:8080 #Cloud Firestore
+      - 8085:8085 #Cloud Pub/Sub
+      - 9000:9000 #Realtime Database
+      - 9005:9005 #Firebase Login
+      - 9099:9099 #Authentication
+      - 9199:9199 #Cloud Storage
+      - 9299:9299 #Event arc
+      - 9499:9499 #Cloud Tasks
+
+volumes:
+  firebase-node-modules:
+  backend-node-modules:

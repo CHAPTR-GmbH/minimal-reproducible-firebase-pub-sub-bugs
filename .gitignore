@@ -1,0 +1,44 @@
+.vscode
+.idea
+.run
+.DS_Store
+*.tsbuildinfo
+.venv
+venv
+__pycache__
+.pytest_cache
+*.secret
+.secret.local
+*.log
+.env
+.python-version
+.pnpm-store
+.cache
+
+
+# firebase emulator data
+# TODO: See to move this to /firebase folder
+
+firebase/emulator-data/*
+!firebase/emulator-data/.gitkeep
+firebase/.cache
+firebase/.config
+firebase/.local
+firebase/.npm
+firebase/.npmrc
+firebase/package-lock.json
+firebase/package.json
+firebase/firebase.json
+firebase/firebase-export-*
+firebase/.bash_history
+firebase/.firebaserc
+firebase/firestore.rules
+firebase/functions/*
+firebase/functions-decorator-logs.txt
+
+
+# python test coverage
+/functions/python/coverage.xml
+/functions/python/coveragejunit.xml
+
+.envrc
