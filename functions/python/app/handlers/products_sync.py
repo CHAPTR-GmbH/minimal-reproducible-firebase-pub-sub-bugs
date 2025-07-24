@@ -65,8 +65,6 @@ def get_product_from_event(
 
 
 def products_sync_handler(event: Event[DocumentSnapshot]) -> None:
-    # Setup Some Typesense collections if they don't exist
-
     # Get the data from the event
     event_type = get_fn_event_type(event)
     product = get_product_from_event(event, event_type)
