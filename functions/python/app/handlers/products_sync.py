@@ -94,7 +94,7 @@ def products_sync_handler(event: Event[DocumentSnapshot]) -> None:
         )
         message_id = future.result()
         _logger.info(
-            f"Published product to bulk typsense sync topic: {message_id} event.id={event.id}"
+            f"Published product to bulk sync topic: {message_id} event.id={event.id}"
         )
     except Exception as e:
         _logger.error(f"Error publishing to bulk topic: {str(e)} event.id={event.id}")
@@ -113,7 +113,7 @@ def products_sync_handler(event: Event[DocumentSnapshot]) -> None:
         )
         trigger_message_id = trigger_future.result()
         _logger.info(
-            f"Published trigger message for bulk typsense sync function: {trigger_message_id} event.id={event.id}"
+            f"Published trigger message for bulk sync function: {trigger_message_id} event.id={event.id}"
         )
     except Exception as e:
         _logger.error(
